@@ -1,5 +1,4 @@
-a = "воврлопрвао валыылдыры ВОВПДЛВАПВДЛД"
-b = a.title()
-print(b.replace(" ", ""))
-
+def camel_case(string: str) -> str:
+    string_title = string.title()
+    return print(string_title.replace(" ", ""))
 
