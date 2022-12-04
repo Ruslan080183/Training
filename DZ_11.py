@@ -10,6 +10,15 @@ class Triangle:
         else:
             return print("Building a triangle is not possible")
 
+class Triangle1:
+        def __init__(self, x=[5, 4, 3]):
+            self.x = x
+
+        def building(self):
+            if sum(self.x) - max(self.x) > max(self.x):
+                return print("Building a triangle is possible")
+            else:
+                return print("Building a triangle is not possible")
 
 
 
