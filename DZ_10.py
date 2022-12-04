@@ -5,7 +5,7 @@ class FootballClub:
     def __str__(self):
         return F"The Football Club {self.name} is located in {self.country}"
     def __repr__(self):
-        return repr(self.name)
+        return self.name, self.country
 class FootballClubBudget(FootballClub):
     def __init__(self, name, country, budget):
         FootballClub.__init__(self, name, country)
@@ -36,15 +36,7 @@ class SeasonResults:
         return self.victories >= other.victories
     def __str__(self):
         return F"Number games - {self.games:victories} - {self.victories}, defeats - {self.defeats} , draws = {self.draws} "
-class RatingClubEurope(NationalChampionship,SeasonResults):
-    def __init__(self, name, country, season, place_championship, games, victories, defeats, draws, rating_place):
-        NationalChampionship.__init__(self, name, country, season, place_championship)
-        SeasonResults.__init__(self, games, victories, defeats, draws)
-        self.rating_place = rating_place
-    def __ge__(self, other):
-        return self.rating_place >= other.rating_place
-    def __str__(self):
-        return F"In the UEFA ranking the Football Club  {self.name} from {self.country} is in {self.rating_place} place"
+
 class Transfers:
         def __init__(self, buying_football_players, sale_football_players, transaction_amount):
             self.buying_football_players = buying_football_players
@@ -54,12 +46,25 @@ class Transfers:
             return self.transaction_amount + other.transaction_amount
         def __str__(self):
             return F"The transfer{self.buying_football_players or self.sale_football_players} was {self.transaction_amount}$"
+
+class RatingClubEurope(NationalChampionship, SeasonResults):
+            def __init__(self, name, country, season, place_championship, games, victories, defeats, draws,
+                         rating_place):
+                NationalChampionship.__init__(self, name, country, season, place_championship)
+                SeasonResults.__init__(self, games, victories, defeats, draws)
+                self.rating_place = rating_place
+
+            def __ge__(self, other):
+                return self.rating_place >= other.rating_place
+
+            def __str__(self):
+                return F"In the UEFA ranking the Football Club  {self.name} from {self.country} is in {self.rating_place} place"
 class PlayerTransitions(FootballClubBudget, Transfers):
     def __init__(self, name, country, budget, buying_football_players, sale_football_players, transaction_amount, footballer):
         FootballClubBudget.__init__(self, name, country, budget)
         Transfers.__init__(self, buying_football_players, sale_football_players, transaction_amount)
         self.footballer = footballer
     def __repr__(self):
-        return repr(self.footballer)
+        return self.footballer
     def __str__(self):
         return F"The transfer of {self.footballer} to the football club {self.name} was paid for {self.transaction_amount}$"
