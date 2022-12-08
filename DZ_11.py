@@ -11,11 +11,14 @@ class Triangle:
             return print("Building a triangle is not possible")
 
 class Triangle1:
-        def __init__(self, x=[5, 4, 3]):
-            self.x = x
+        def __init__(self, sides_triangle):
+            self.sides_triangle = sides_triangle
 
         def building(self):
-            if sum(self.x) - max(self.x) > max(self.x):
+            a = self.sides_triangle[0]
+            b = self.sides_triangle[1]
+            c = self.sides_triangle[2]
+            if sum(self.sides_triangle) - max(self.sides_triangle) > max(self.sides_triangle):
                 return print("Building a triangle is possible")
             else:
                 return print("Building a triangle is not possible")
