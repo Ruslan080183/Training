@@ -14,4 +14,9 @@ class Film(models.Model):
 
     def __str__(self):
         return F"{self.title} {self.country} {self.year}"
+class Viewer(models.Model):
+    name = models.CharField(max_length=300)
+    film = models.ForeignKey(Film, on_delete=models.CASCADE)
+    def __str__(self):
+        return F"{self.name} {self.film}"
 
