@@ -19,5 +19,6 @@ class Viewer(models.Model):
     film = models.ForeignKey(Film, on_delete=models.CASCADE)
     def __str__(self):
         return F"{self.name} {self.film}"
+
 class RatingViews(models.Model):
     views = models.IntegerField(max_length=100)
