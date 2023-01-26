@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import Genre, Film, Viewer, RatingViews
 
-# Register your models here.
+admin.site.register(Genre)
+admin.site.register(Film)
+admin.site.register(Viewer)
+admin.site.register(RatingViews)
